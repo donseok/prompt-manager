@@ -27,8 +27,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Desktop sidebar */}
-      {!isMobile && sidebarOpen && (
-        <aside className="hidden md:block shrink-0">
+      {!isMobile && (
+        <aside
+          className={cn(
+            "hidden md:block shrink-0 overflow-hidden transition-all duration-200",
+            sidebarOpen ? "w-64" : "w-0"
+          )}
+        >
           <AppSidebar />
         </aside>
       )}

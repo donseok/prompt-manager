@@ -87,12 +87,12 @@ export function PromptList() {
       <div
         className={cn(
           viewMode === "grid"
-            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            : "flex flex-col gap-3"
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+            : "flex flex-col gap-2"
         )}
       >
         {Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} className="h-48 rounded-xl" />
+          <Skeleton key={i} className="h-[220px] rounded-xl" />
         ))}
       </div>
     );
@@ -101,9 +101,11 @@ export function PromptList() {
   if (filtered.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-24 text-muted-foreground">
-        <FileText className="size-12 opacity-40" />
-        <div className="text-center">
-          <p className="text-lg font-medium">프롬프트가 없습니다</p>
+        <div className="flex items-center justify-center size-20 rounded-2xl bg-muted/60">
+          <FileText className="size-10 opacity-40" />
+        </div>
+        <div className="text-center max-w-xs">
+          <p className="text-lg font-semibold text-foreground">프롬프트가 없습니다</p>
           <p className="text-sm mt-1">
             {filter.search
               ? "검색 결과가 없습니다. 다른 키워드로 검색해 보세요."
@@ -124,8 +126,8 @@ export function PromptList() {
     <div
       className={cn(
         viewMode === "grid"
-          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          : "flex flex-col gap-3"
+          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+          : "flex flex-col gap-2"
       )}
     >
       {filtered.map((prompt) => (

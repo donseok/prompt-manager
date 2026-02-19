@@ -63,7 +63,7 @@ export function AppHeader() {
         {/* Sidebar toggle */}
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={toggleSidebar}>
+            <Button variant="ghost" size="icon" className="size-8" onClick={toggleSidebar}>
               {sidebarOpen ? (
                 <PanelLeftClose className="size-4" />
               ) : (
@@ -81,8 +81,11 @@ export function AppHeader() {
             placeholder="프롬프트 검색..."
             value={localSearch}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="pl-9 h-9"
+            className="pl-9 h-9 bg-muted/50 border-transparent focus:bg-background focus:border-input"
           />
+          <kbd className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-5 items-center rounded border bg-muted px-1.5 font-mono text-[10px] text-muted-foreground">
+            Ctrl+K
+          </kbd>
         </div>
 
         <div className="flex items-center gap-1 ml-auto">
@@ -92,6 +95,7 @@ export function AppHeader() {
               <Button
                 variant="ghost"
                 size="icon"
+                className="size-8"
                 onClick={() =>
                   setViewMode(viewMode === "grid" ? "list" : "grid")
                 }
@@ -114,6 +118,7 @@ export function AppHeader() {
               <Button
                 variant="ghost"
                 size="icon"
+                className="size-8"
                 onClick={() => setCommandPaletteOpen(true)}
               >
                 <Command className="size-4" />
@@ -130,6 +135,7 @@ export function AppHeader() {
               <Button
                 variant="ghost"
                 size="icon"
+                className="size-8"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 {mounted && theme === "dark" ? (
@@ -143,7 +149,7 @@ export function AppHeader() {
           </Tooltip>
 
           {/* Add prompt */}
-          <Button size="sm" onClick={() => openPromptDialog()} className="gap-1.5 ml-1">
+          <Button size="sm" onClick={() => openPromptDialog()} className="gap-1.5 ml-1 shadow-sm">
             <Plus className="size-4" />
             새 프롬프트
           </Button>

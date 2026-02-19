@@ -45,7 +45,11 @@ export function AppSidebar() {
         <Link href="/">
           <Button
             variant={!isAnalytics && !filter.categoryId && !filter.favoritesOnly ? "secondary" : "ghost"}
-            className="w-full justify-start gap-2"
+            className={cn(
+              "w-full justify-start gap-2",
+              !isAnalytics && !filter.categoryId && !filter.favoritesOnly &&
+                "bg-sidebar-accent font-medium border-l-2 border-sidebar-primary rounded-l-none"
+            )}
             onClick={() => {
               resetFilter();
             }}
@@ -57,7 +61,11 @@ export function AppSidebar() {
         <Link href="/">
           <Button
             variant={filter.favoritesOnly ? "secondary" : "ghost"}
-            className="w-full justify-start gap-2"
+            className={cn(
+              "w-full justify-start gap-2",
+              filter.favoritesOnly &&
+                "bg-sidebar-accent font-medium border-l-2 border-sidebar-primary rounded-l-none"
+            )}
             onClick={() => {
               setFavoritesOnly(!filter.favoritesOnly);
               setCategoryId(null);
@@ -70,7 +78,11 @@ export function AppSidebar() {
         <Link href="/analytics">
           <Button
             variant={isAnalytics ? "secondary" : "ghost"}
-            className="w-full justify-start gap-2"
+            className={cn(
+              "w-full justify-start gap-2",
+              isAnalytics &&
+                "bg-sidebar-accent font-medium border-l-2 border-sidebar-primary rounded-l-none"
+            )}
           >
             <BarChart3 className="size-4" />
             분석
@@ -82,7 +94,7 @@ export function AppSidebar() {
 
       {/* Categories */}
       <div className="flex items-center justify-between px-4 pt-3 pb-1">
-        <span className="text-xs font-medium text-muted-foreground uppercase">
+        <span className="text-xs font-semibold tracking-wider text-muted-foreground/70 uppercase">
           카테고리
         </span>
         <Button
@@ -110,7 +122,11 @@ export function AppSidebar() {
                   variant={
                     filter.categoryId === category.id ? "secondary" : "ghost"
                   }
-                  className="w-full justify-start gap-2"
+                  className={cn(
+                    "w-full justify-start gap-2",
+                    filter.categoryId === category.id &&
+                      "bg-sidebar-accent font-medium border-l-2 border-sidebar-primary rounded-l-none"
+                  )}
                   onClick={() => {
                     setCategoryId(
                       filter.categoryId === category.id ? null : category.id
@@ -119,7 +135,7 @@ export function AppSidebar() {
                   }}
                 >
                   <span
-                    className="size-2.5 rounded-full shrink-0"
+                    className="size-2.5 rounded-full shrink-0 ring-1 ring-foreground/5"
                     style={{
                       backgroundColor: category.color || "hsl(var(--muted-foreground))",
                     }}

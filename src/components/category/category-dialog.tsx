@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useUIStore } from "@/store/ui-store";
+import { cn } from "@/lib/utils";
 import {
   useCategory,
   useCreateCategory,
@@ -109,11 +110,15 @@ export function CategoryDialog() {
                   <button
                     key={c}
                     type="button"
-                    className="size-7 rounded-full border-2 transition-transform hover:scale-110"
+                    className={cn(
+                      "size-7 rounded-full transition-transform hover:scale-110",
+                      color === c
+                        ? "ring-2 ring-offset-2 ring-offset-background scale-110"
+                        : ""
+                    )}
                     style={{
                       backgroundColor: c,
-                      borderColor: color === c ? "white" : "transparent",
-                      outline: color === c ? `2px solid ${c}` : "none",
+                      ...(color === c ? { ["--tw-ring-color" as string]: c } : {}),
                     }}
                     onClick={() => setColor(c)}
                   />

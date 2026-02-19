@@ -53,8 +53,8 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
   };
 
   return (
-    <Card className="group relative flex flex-col transition-shadow hover:shadow-md">
-      <CardHeader className="pb-2">
+    <Card className="group relative flex flex-col transition-all duration-200 hover:shadow-md hover:border-foreground/15 hover:-translate-y-0.5">
+      <CardHeader className="pb-1">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
             <CardTitle className="text-base truncate">{prompt.title}</CardTitle>
@@ -64,7 +64,7 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
               </CardDescription>
             )}
           </div>
-          <div className="flex items-center gap-0.5 shrink-0">
+          <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity md:opacity-0 max-md:opacity-100">
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -124,7 +124,7 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
       </CardHeader>
 
       <CardContent
-        className="flex-1 cursor-pointer"
+        className="flex-1 cursor-pointer border-t border-dashed border-border/50 pt-3"
         onClick={() => openPromptDetail(prompt.id)}
       >
         <p className="text-sm text-muted-foreground line-clamp-3 whitespace-pre-wrap">
@@ -132,7 +132,7 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
         </p>
       </CardContent>
 
-      <CardFooter className="flex flex-wrap items-center gap-1.5 pt-0 text-xs text-muted-foreground">
+      <CardFooter className="flex flex-wrap items-center gap-1.5 mt-auto border-t border-border/30 pt-3 text-xs text-muted-foreground">
         {category && (
           <Badge variant="outline" className="gap-1 text-xs font-normal">
             <span

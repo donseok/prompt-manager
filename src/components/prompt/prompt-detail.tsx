@@ -85,7 +85,7 @@ export function PromptDetail() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 mt-3">
+          <div className="flex flex-wrap items-center gap-2 mt-3">
             <Button variant="default" size="sm" className="gap-1.5" onClick={handleCopy}>
               <Copy className="size-3.5" />
               복사
@@ -152,14 +152,14 @@ export function PromptDetail() {
         {prompt && (
           <>
             <Separator />
-            <div className="px-6 py-3 text-xs text-muted-foreground flex items-center gap-4">
+            <div className="px-6 py-3 text-xs text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1">
               <span>
                 생성: {format(new Date(prompt.created_at), "yyyy.MM.dd HH:mm", { locale: ko })}
               </span>
               <span>
                 수정: {formatDistanceToNow(new Date(prompt.updated_at), { addSuffix: true, locale: ko })}
               </span>
-              <span>사용: {prompt.usage_count}회</span>
+              <span className="ml-auto">사용: {prompt.usage_count}회</span>
             </div>
           </>
         )}

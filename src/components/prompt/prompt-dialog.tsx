@@ -102,7 +102,7 @@ export function PromptDialog() {
 
   return (
     <Dialog open={promptDialogOpen} onOpenChange={(open) => !open && closePromptDialog()}>
-      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>
@@ -180,17 +180,17 @@ export function PromptDialog() {
             {/* Tags */}
             <div className="grid gap-2">
               <Label>태그</Label>
-              <div className="flex gap-2">
+              <div className="relative">
                 <Input
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={handleTagKeyDown}
-                  placeholder="태그 입력 후 Enter"
-                  className="flex-1"
+                  placeholder="태그 입력"
+                  className="pr-16"
                 />
-                <Button type="button" variant="outline" onClick={addTag} disabled={!tagInput.trim()}>
-                  추가
-                </Button>
+                <kbd className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 inline-flex h-5 items-center rounded border bg-muted px-1.5 font-mono text-[10px] text-muted-foreground">
+                  Enter
+                </kbd>
               </div>
               {tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-1">
